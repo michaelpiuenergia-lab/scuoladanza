@@ -48,8 +48,8 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-24 bottom-10 z-0 h-96 w-96 rounded-full bg-terracotta/15 blur-[130px]" />
 
       {/* Anima siciliana: trama di maiolica e un ramo di limoni */}
-      <MajolicaPattern className="text-gold" opacity={0.05} />
-      <Limoni className="pointer-events-none absolute bottom-14 right-8 z-0 hidden h-52 w-52 rotate-[195deg] text-sun opacity-40 lg:block" />
+      <MajolicaPattern className="text-gold" opacity={0.08} />
+      <Limoni className="pointer-events-none absolute -bottom-2 -right-4 z-0 h-44 w-44 rotate-[195deg] text-sun opacity-50 sm:bottom-10 sm:right-8 sm:h-60 sm:w-60" />
 
       <div className="container-x relative z-10 py-24 sm:py-32">
         <motion.div

@@ -16,12 +16,12 @@ export function Sicilia() {
       <MajolicaRibbon />
 
       {/* Calore mediterraneo */}
-      <MajolicaPattern className="text-majolica" opacity={0.08} />
+      <MajolicaPattern className="text-majolica" opacity={0.12} />
       {/* Trinacria in filigrana — identità siciliana */}
-      <Trinacria className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 text-majolica opacity-[0.05]" />
+      <Trinacria className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 text-majolica opacity-[0.08]" />
       {/* Limoni di Sicilia agli angoli */}
-      <Limoni className="pointer-events-none absolute -left-5 top-14 z-0 h-40 w-40 -rotate-12 text-sun opacity-25" />
-      <Limoni className="pointer-events-none absolute -right-4 bottom-20 z-0 h-44 w-44 rotate-[165deg] text-terracotta opacity-20" />
+      <Limoni className="pointer-events-none absolute -left-5 top-12 z-0 h-52 w-52 -rotate-12 text-sun opacity-45" />
+      <Limoni className="pointer-events-none absolute -right-4 bottom-16 z-0 h-56 w-56 rotate-[165deg] text-terracotta opacity-35" />
       <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-terracotta/15 blur-[120px]" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-sun/15 blur-[120px]" />
 

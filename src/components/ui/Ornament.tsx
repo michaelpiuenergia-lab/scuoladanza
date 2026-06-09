@@ -126,6 +126,38 @@ export function Limoni({ className }: { className?: string }) {
   );
 }
 
+// Cupole a cipolla russe (San Pietroburgo) con croce ortodossa — l'anima
+// imperiale del balletto. Silhouette piena, ben visibile.
+export function CupoleRusse({ className }: { className?: string }) {
+  const domes = [
+    { x: 30, bw: 14, yb: 68, yt: 30, dh: 20 },
+    { x: 70, bw: 20, yb: 64, yt: 12, dh: 24 },
+    { x: 110, bw: 14, yb: 68, yt: 30, dh: 20 },
+  ];
+  return (
+    <svg
+      viewBox="0 0 140 92"
+      className={cn("text-majolica", className)}
+      aria-hidden="true"
+      fill="currentColor"
+    >
+      {domes.map((d, i) => (
+        <g key={i}>
+          {/* croce ortodossa */}
+          <rect x={d.x - 0.9} y={d.yt - 13} width="1.8" height="13" />
+          <rect x={d.x - 4} y={d.yt - 9.5} width="8" height="1.8" />
+          {/* cupola a cipolla */}
+          <path
+            d={`M ${d.x - d.bw} ${d.yb} C ${d.x - d.bw * 1.4} ${d.yb - 15}, ${d.x - d.bw * 0.5} ${d.yt + 5}, ${d.x} ${d.yt} C ${d.x + d.bw * 0.5} ${d.yt + 5}, ${d.x + d.bw * 1.4} ${d.yb - 15}, ${d.x + d.bw} ${d.yb} Z`}
+          />
+          {/* tamburo */}
+          <rect x={d.x - d.bw * 0.78} y={d.yb} width={d.bw * 1.56} height={d.dh} rx="2" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 // Nastro di maioliche siciliane COLORATE — divisore decorativo (terracotta,
 // azzurro mediterraneo, sole, oro). Dà calore e identità al sito.
 export function MajolicaRibbon({

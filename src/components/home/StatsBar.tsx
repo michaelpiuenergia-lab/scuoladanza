@@ -1,9 +1,11 @@
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { MajolicaRibbon } from "@/components/ui/Ornament";
 import { STATS } from "@/data/content";
 
 export function StatsBar() {
   return (
-    <section className="relative border-y bg-surface-2">
+    <section className="relative border-b bg-surface-2">
+      <MajolicaRibbon />
       <div className="container-x py-12">
         <RevealGroup className="grid grid-cols-2 gap-y-10 md:grid-cols-4">
           {STATS.map((s, i) => (

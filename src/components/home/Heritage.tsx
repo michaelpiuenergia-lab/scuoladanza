@@ -1,21 +1,32 @@
-import { Crown, Sun, MapPin } from "lucide-react";
+import { Crown, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
-import { Diamond, MajolicaPattern, Limoni, Pigna } from "@/components/ui/Ornament";
+import {
+  Diamond,
+  MajolicaPattern,
+  MajolicaRibbon,
+  Limoni,
+  Pigna,
+  Trinacria,
+  CupoleRusse,
+} from "@/components/ui/Ornament";
 import { HERITAGE } from "@/data/content";
 import { PHOTOS, photo } from "@/data/photos";
 
 export function Heritage() {
   return (
-    <section id="heritage" className="relative overflow-hidden bg-cream-2 py-16 sm:py-28">
-      <MajolicaPattern className="text-majolica" opacity={0.07} />
-      {/* Limoni e pigna: accenti siciliani */}
-      <Limoni className="pointer-events-none absolute -right-6 top-20 z-0 h-44 w-44 rotate-[160deg] text-sun opacity-25" />
-      <Pigna className="pointer-events-none absolute -left-3 bottom-12 z-0 h-40 w-28 text-terracotta opacity-[0.14]" />
+    <section id="heritage" className="relative overflow-hidden bg-cream-2">
+      <MajolicaRibbon />
+      <MajolicaPattern className="text-majolica" opacity={0.12} />
+      {/* Russia (cupole di San Pietroburgo) a sinistra, Sicilia (limoni) a destra */}
+      <CupoleRusse className="pointer-events-none absolute -left-10 top-24 z-0 h-44 w-64 text-majolica opacity-30" />
+      <Limoni className="pointer-events-none absolute -right-8 top-28 z-0 h-60 w-60 rotate-[160deg] text-sun opacity-45" />
+      <Pigna className="pointer-events-none absolute left-6 bottom-24 z-0 h-44 w-32 text-terracotta opacity-25" />
+      <Trinacria className="pointer-events-none absolute right-12 bottom-16 z-0 h-40 w-40 text-terracotta opacity-[0.14]" />
       <div className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-majolica/10 blur-[120px]" />
       <div className="pointer-events-none absolute right-1/4 bottom-10 h-72 w-72 translate-x-1/2 rounded-full bg-terracotta/12 blur-[120px]" />
 
-      <div className="container-x relative z-10">
+      <div className="container-x relative z-10 py-16 sm:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow is-centered">{HERITAGE.eyebrow}</span>
           <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.25rem)] leading-tight u-ink text-balance">
@@ -37,8 +48,8 @@ export function Heritage() {
               />
               <div className="p-8">
               <div className="flex items-center gap-3">
-                <span className="grid h-12 w-12 place-items-center rounded-full border border-majolica/40 bg-majolica/10 text-majolica-deep">
-                  <Crown className="h-6 w-6" />
+                <span className="grid h-12 w-14 place-items-center rounded-full border border-majolica/40 bg-majolica/10 text-majolica-deep">
+                  <CupoleRusse className="h-7 w-9" />
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-majolica-deep">
                   {HERITAGE.russia.tag}
@@ -84,7 +95,7 @@ export function Heritage() {
               <div className="p-8">
               <div className="flex items-center gap-3">
                 <span className="grid h-12 w-12 place-items-center rounded-full border border-terracotta/40 bg-terracotta/10 text-terracotta-deep">
-                  <Sun className="h-6 w-6" />
+                  <Trinacria className="h-7 w-7" />
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-terracotta-deep">
                   {HERITAGE.sicilia.tag}
@@ -109,6 +120,7 @@ export function Heritage() {
           </Reveal>
         </div>
       </div>
+      <MajolicaRibbon />
     </section>
   );
 }
