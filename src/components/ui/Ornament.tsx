@@ -95,6 +95,37 @@ export function Pigna({ className }: { className?: string }) {
   );
 }
 
+// Ramo di limoni di Sicilia — il profumo del Mediterraneo. Linea elegante.
+export function Limoni({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={cn("text-sun", className)}
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+    >
+      <g strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {/* ramo */}
+        <path d="M14 16 C40 24 64 36 86 64" opacity="0.85" />
+        {/* foglie a mandorla */}
+        <path d="M28 18 Q40 9 53 19 Q41 28 28 18 Z" />
+        <path d="M58 38 Q72 30 85 42 Q71 49 58 38 Z" />
+        {/* limone 1 */}
+        <g transform="rotate(20 39 50)">
+          <ellipse cx="39" cy="50" rx="10" ry="13" />
+          <path d="M39 37 l0 -4" />
+        </g>
+        {/* limone 2 */}
+        <g transform="rotate(12 73 79)">
+          <ellipse cx="73" cy="79" rx="11" ry="14" />
+          <path d="M73 65 l0 -4" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
 // Nastro di maioliche siciliane COLORATE — divisore decorativo (terracotta,
 // azzurro mediterraneo, sole, oro). Dà calore e identità al sito.
 export function MajolicaRibbon({

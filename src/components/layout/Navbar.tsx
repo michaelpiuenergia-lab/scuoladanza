@@ -43,11 +43,13 @@ export function Navbar() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        // modalità scura (testo chiaro) finché non si scrolla sulla home
-        !solid && "on-dark",
-        solid
-          ? "border-b border-gold/15 bg-cream/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent",
+        // modalità scura (testo chiaro) in cima alla home e quando il menu è aperto
+        (!solid || open) && "on-dark",
+        open
+          ? "border-b border-gold/15 bg-scene"
+          : solid
+            ? "border-b border-gold/15 bg-cream/85 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent",
       )}
     >
       <nav className="container-x flex h-[4.75rem] items-center justify-between">
@@ -101,7 +103,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="on-dark fixed inset-0 top-[4.75rem] z-40 bg-scene/97 backdrop-blur-xl lg:hidden"
+            className="on-dark fixed inset-0 top-[4.75rem] z-40 bg-scene lg:hidden"
           >
             <div className="container-x flex flex-col gap-2 py-8">
               {NAV_LINKS.map((link, i) => (

@@ -147,17 +147,17 @@
     background:
       radial-gradient(
         55% 45% at 100% 0%,
-        rgba(197, 106, 62, 0.1),
+        rgba(197, 106, 62, 0.13),
         transparent 60%
       ),
       radial-gradient(
         50% 45% at 0% 100%,
-        rgba(46, 110, 142, 0.07),
+        rgba(46, 110, 142, 0.09),
         transparent 60%
       ),
       radial-gradient(
         45% 40% at 50% 50%,
-        rgba(224, 163, 62, 0.05),
+        rgba(224, 163, 62, 0.07),
         transparent 70%
       );
   }

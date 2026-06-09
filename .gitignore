@@ -37,3 +37,5 @@ yarn-error.log*
 # script di lavoro e file generati (scraping, provini, screenshot, pool foto)
 # Non servono al sito: le immagini usate sono in /public/images.
 /scripts/
+
+.vercel

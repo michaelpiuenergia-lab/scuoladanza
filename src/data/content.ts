@@ -124,11 +124,11 @@ export const HERITAGE = {
 export const SICILIA = {
   eyebrow: "Le nostre radici",
   title: "Danza che profuma di Mediterraneo",
-  text: "Siamo a Bagheria, terra di ville barocche, luce e maioliche. La nostra scuola intreccia il rigore della grande tradizione accademica con il calore e la generosità siciliana: un luogo dove la disciplina si fa accoglienza e ogni allievo si sente a casa.",
+  text: "Siamo a Bagheria, fra le ville barocche, il profumo di zàgara e limoni e la luce dorata del mare. Qui la grande tradizione accademica incontra l'anima della Sicilia — le maioliche di Caltagirone, la pigna portafortuna, la Trinacria: la disciplina si fa accoglienza e la sala diventa casa, una sola grande famiglia mediterranea.",
   points: [
-    { title: "A Bagheria", text: "In Via Papa Giovanni XXIII, nel cuore della città." },
-    { title: "Comunità", text: "Famiglie, allievi e maestri: una sola, grande famiglia." },
-    { title: "Sul palco", text: "Spettacoli che raccontano la bellezza della nostra terra." },
+    { title: "Cuore di Bagheria", text: "Fra ville barocche e maioliche, in Via Papa Giovanni XXIII." },
+    { title: "Calore mediterraneo", text: "Famiglie, allievi e maestri: una sola, grande famiglia." },
+    { title: "La nostra terra in scena", text: "Saggi e spettacoli che profumano di Sicilia." },
   ],
 };
 
