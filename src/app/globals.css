@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — A.C.R.S.D. Khaybullova
+   "Teatro elegante" in chiave LUMINOSA: avorio · oro · grafite,
+   con fasce scure d'effetto (.on-dark) e anima siciliana.
+   ============================================================ */
+
+@theme {
+  /* — Palette accenti (token fissi) — */
+  --color-scene: #0b0b0f;
+  --color-scene-800: #100f0a;
+  --color-scene-700: #16140d;
+  --color-scene-600: #1e1b12;
+  --color-scene-500: #272217;
+
+  --color-cream: #fbf7f0;
+  --color-cream-2: #f3ecdf;
+  --color-paper: #ffffff;
+
+  --color-ivory: #f6f1e9;
+  --color-ivory-dim: #d2cabb;
+  --color-ivory-mute: #9a9082;
+
+  --color-ink: #1b1712;
+  --color-ink-soft: #514a3f;
+  --color-ink-mute: #8a7f6e;
+
+  --color-gold: #b8862f;
+  --color-gold-light: #e2c275;
+  --color-gold-soft: #d8b86a;
+  --color-gold-deep: #8a6216;
+  --color-gold-ink: #6e5520;
+
+  --color-terracotta: #c56a3e;
+  --color-terracotta-light: #db8a5e;
+  --color-terracotta-deep: #9c4f2c;
+  --color-sun: #e0a33e;
+  --color-sun-light: #f2c46b;
+
+  --color-majolica: #2e6e8e;
+  --color-majolica-light: #4e93b3;
+  --color-majolica-deep: #1e4e66;
+
+  /* — Tipografia — */
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* — Ombre — */
+  --shadow-gold: 0 0 0 1px rgba(184, 134, 47, 0.25),
+    0 18px 50px -16px rgba(184, 134, 47, 0.3);
+  --shadow-soft: 0 22px 50px -24px rgba(60, 45, 20, 0.28);
+  --shadow-card: 0 12px 34px -18px rgba(60, 45, 20, 0.25);
+  --shadow-lift: 0 36px 90px -34px rgba(20, 15, 5, 0.45);
+
+  --radius-xl2: 1.25rem;
+  --tracking-title: 0.18em;
+  --tracking-widest: 0.25em;
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  --animate-shimmer: shimmer 3.5s linear infinite;
+  --animate-float-slow: float-slow 7s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 26s linear infinite;
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   VARIABILI SEMANTICHE — tema chiaro (default) / scuro (.on-dark)
+   ============================================================ */
+@layer base {
+  :root {
+    --bg: #f0e5d0; /* crema-sabbia calda: stacco netto dalle card */
+    --surface: #faf7f2; /* avorio caldo per le card — emerge sul fondo */
+    --surface-2: #e4d8ba; /* sabbia più profonda per le fasce alternate */
+    --ink: #1a1410; /* titoli profondi (AAA su surface) */
+    --body: #4a4038; /* testo scuro e leggibile (≈7:1) */
+    --mute: #7d6f55;
+    --line: rgba(26, 20, 16, 0.22); /* bordi finalmente visibili */
+    --line-strong: rgba(26, 20, 16, 0.38);
+    --gold-text: #7a5a1a; /* oro accento più scuro: AA su crema */
+    --gold-accent: #b8862f;
+    /* Doppia ombra: stacco e profondità delle card senza pesantezza */
+    --shadow-panel: 0 4px 12px rgba(26, 20, 16, 0.08),
+      0 14px 34px rgba(26, 20, 16, 0.12);
+  }
+
+  .on-dark {
+    --bg: #0b0b0f;
+    --surface: rgba(255, 255, 255, 0.05);
+    --surface-2: #14110c;
+    --ink: #f6f1e9;
+    --body: #d2cabb;
+    --mute: #9a9082;
+    --line: rgba(201, 162, 75, 0.18);
+    --line-strong: rgba(201, 162, 75, 0.3);
+    --gold-text: #e6c880;
+    --gold-accent: #c9a24b;
+    --shadow-panel: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+  }
+
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Velatura calda mediterranea di fondo: niente bianco piatto */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        55% 45% at 100% 0%,
+        rgba(197, 106, 62, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        50% 45% at 0% 100%,
+        rgba(46, 110, 142, 0.07),
+        transparent 60%
+      ),
+      radial-gradient(
+        45% 40% at 50% 50%,
+        rgba(224, 163, 62, 0.05),
+        transparent 70%
+      );
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  /* Le ancore interne non finiscono sotto la navbar fissa */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background: rgba(184, 134, 47, 0.25);
+    color: #1b1712;
+  }
+
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: #efe7d8; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c9a24b, #a07e2e);
+    border-radius: 999px;
+    border: 3px solid #efe7d8;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================
+   COMPONENTI / UTILITY
+   ============================================================ */
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .container-x { padding-inline: 2.5rem; }
+  }
+
+  /* Colori semantici (si adattano al contesto chiaro/scuro) */
+  .u-ink { color: var(--ink); }
+  .u-body { color: var(--body); }
+  .u-mute { color: var(--mute); }
+  .u-gold { color: var(--gold-text); }
+  .u-line { border-color: var(--line); }
+  .bg-page { background: var(--bg); }
+  .bg-surface { background: var(--surface); }
+  .bg-surface-2 { background: var(--surface-2); }
+
+  /* Etichetta occhiello */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-title);
+    text-transform: uppercase;
+    color: var(--gold-text);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-accent));
+  }
+  .eyebrow.is-centered::after {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-accent), transparent);
+  }
+
+  /* Testo oro sfumato (parole chiave nei titoli) */
+  .text-gold-gradient {
+    background: linear-gradient(120deg, #c9952f 0%, #b8862f 45%, #8a6216 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .on-dark .text-gold-gradient {
+    background: linear-gradient(120deg, #e2c275 0%, #c9a24b 45%, #a07e2e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Pannello (card) — chiaro di default, vetroso su .on-dark */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl2);
+    box-shadow: var(--shadow-panel);
+  }
+  .on-dark .panel {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  .panel-solid {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl2);
+    box-shadow: var(--shadow-panel);
+  }
+  .on-dark .panel-solid {
+    background: linear-gradient(180deg, #16140d, #100f0a);
+  }
+
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--line-strong),
+      transparent
+    );
+  }
+
+  .bg-gold-grad {
+    background: linear-gradient(135deg, #e2c275 0%, #c9a24b 48%, #a07e2e 100%);
+  }
+
+  .ring-gold-hover {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .ring-gold-hover:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-3px);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    background: linear-gradient(120deg, var(--ink), var(--gold-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .shimmer-line {
+    background: linear-gradient(
+      90deg,
+      var(--color-gold-deep) 0%,
+      var(--color-gold-light) 20%,
+      #fff7e6 30%,
+      var(--color-gold-light) 40%,
+      var(--color-gold-deep) 60%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Campo modulo — si adatta al tema */
+  .field-base {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field-base::placeholder { color: var(--mute); }
+  .field-base:focus {
+    outline: none;
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 0 3px rgba(184, 134, 47, 0.12);
+  }
+  .on-dark .field-base {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Pulsanti — theme-aware */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease,
+      background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .btn:disabled { opacity: 0.6; pointer-events: none; }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #e2c275 0%, #c9a24b 48%, #a07e2e 100%);
+    color: #1b1712;
+    box-shadow: 0 10px 30px -10px rgba(184, 134, 47, 0.5);
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 45px -12px rgba(184, 134, 47, 0.62);
+  }
+
+  .btn-outline { border: 1px solid var(--line-strong); color: var(--ink); }
+  .btn-outline:hover {
+    border-color: var(--gold-accent);
+    color: var(--gold-text);
+    background: color-mix(in srgb, var(--gold-accent) 8%, transparent);
+  }
+
+  .btn-ghost { color: var(--body); }
+  .btn-ghost:hover { color: var(--gold-text); }
+
+  .btn-dark {
+    background: var(--surface-2);
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-dark:hover { border-color: var(--gold-accent); }
+
+  /* Link di navigazione — theme-aware */
+  .nav-link {
+    color: var(--body);
+    transition: color 0.2s ease;
+  }
+  .nav-link:hover,
+  .nav-link[data-active="true"] {
+    color: var(--gold-text);
+  }
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }

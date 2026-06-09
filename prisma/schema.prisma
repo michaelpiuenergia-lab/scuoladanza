@@ -1,0 +1,97 @@
+// Schema dati — A.C.R.S.D. Khaybullova
+// Database SQLite locale, gratuito e persistente.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Utente: cliente iscritto oppure amministratore della scuola
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  phone        String?
+  birthDate    DateTime?
+  role         String    @default("CLIENT") // CLIENT | ADMIN
+  createdAt    DateTime  @default(now())
+
+  memberships    CourseMembership[]
+  subscriptions  Subscription[]
+  communications Communication[]
+}
+
+// Corso offerto dalla scuola
+model Course {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  title       String
+  category    String // Classica | Moderna | Contemporanea | Propedeutica | Adulti
+  level       String // Principianti | Intermedio | Avanzato | Tutti i livelli
+  ageGroup    String // "3–5 anni", "6–10 anni", "Teen", "Adulti"
+  teacher     String
+  schedule    String // "Lun e Mer · 17:00–18:30"
+  description String
+  highlight   Boolean @default(false)
+  order       Int     @default(0)
+  active      Boolean @default(true)
+
+  memberships CourseMembership[]
+}
+
+// Iscrizione attiva di un cliente a un corso
+model CourseMembership {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+}
+
+// Abbonamento del cliente (con scadenza modificabile dall'admin)
+model Subscription {
+  id        String   @id @default(cuid())
+  userId    String
+  plan      String // "Mensile" | "Trimestrale" | "Annuale"
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Comunicazione della scuola (userId null = avviso generale per tutti)
+model Communication {
+  id        String   @id @default(cuid())
+  userId    String?
+  title     String
+  body      String
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Richiesta di iscrizione inviata dal modulo pubblico del sito
+model EnrollmentRequest {
+  id         String   @id @default(cuid())
+  firstName  String
+  lastName   String
+  email      String
+  phone      String
+  birthDate  String?
+  courseName String?
+  message    String?
+  privacy    Boolean  @default(false)
+  status     String   @default("NUOVA") // NUOVA | CONTATTATA | ARCHIVIATA
+  createdAt  DateTime @default(now())
+}

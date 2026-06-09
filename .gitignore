@@ -1,0 +1,37 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# database
+/prisma/dev.db
+/prisma/dev.db-journal
+*.db
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files (segreti: DB, auth) — non vanno su GitHub
+.env
+.env*
+
+# typescript
+*.tsbuildinfo
+
+# script di lavoro e file generati (scraping, provini, screenshot, pool foto)
+# Non servono al sito: le immagini usate sono in /public/images.
+/scripts/
