@@ -29,6 +29,11 @@ export const SITE = {
   whatsapp: "393771043456",
   whatsappHref: "https://wa.me/393771043456",
 
+  // Dati fiscali dell'associazione
+  cf: "90013140828",
+  piva: "06475330822",
+  foundedYear: 2008,
+
   mapEmbed:
     "https://www.google.com/maps?q=Via+Papa+Giovanni+XXIII+26+Bagheria&output=embed",
   mapLink:

@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/chi-siamo", priority: 0.8 },
     { path: "/iscrizione", priority: 0.9 },
     { path: "/contatti", priority: 0.7 },
+    { path: "/privacy", priority: 0.3 },
     // Pagine di dettaglio di ogni corso
     ...COURSES.map((c) => ({ path: `/corsi/${c.slug}`, priority: 0.6 })),
   ];

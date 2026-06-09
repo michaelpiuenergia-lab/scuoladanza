@@ -17,7 +17,7 @@ export const STATS = [
   { value: "13", label: "corsi", sub: "dai 3 anni agli adulti" },
   { value: "Vaganova", label: "metodo", sub: "tradizione accademica russa" },
   { value: "5/5", label: "recensioni", sub: "il giudizio delle famiglie" },
-  { value: "Bagheria", label: "la nostra sede", sub: "nel cuore della Sicilia" },
+  { value: "18", label: "anni di esperienza", sub: "a Bagheria, dal 2008" },
 ];
 
 export const PILLARS = [

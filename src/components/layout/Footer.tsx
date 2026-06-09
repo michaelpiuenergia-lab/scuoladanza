@@ -138,7 +138,7 @@ export function Footer() {
               Privacy &amp; Cookie
             </Link>
             <span className="text-white/15">·</span>
-            <span>P.IVA / C.F. da inserire</span>
+            <span>P.IVA {SITE.piva} · C.F. {SITE.cf}</span>
           </p>
         </div>
       </div>
