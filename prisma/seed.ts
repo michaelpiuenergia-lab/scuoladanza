@@ -1,8 +1,22 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaLibSQL } from "@prisma/adapter-libsql";
 import bcrypt from "bcryptjs";
 import { COURSES } from "../src/data/courses";
 
-const prisma = new PrismaClient();
+// Stessa logica di src/lib/db.ts: Turso (libSQL) se DATABASE_URL è remoto,
+// altrimenti SQLite locale. Per popolare Turso, esegui il seed con le sue
+// variabili d'ambiente impostate (DATABASE_URL=libsql://… e DATABASE_AUTH_TOKEN).
+const url = process.env.DATABASE_URL ?? "";
+const useTurso = url.startsWith("libsql:") || url.startsWith("http");
+
+const prisma = useTurso
+  ? new PrismaClient({
+      adapter: new PrismaLibSQL({
+        url,
+        authToken: process.env.DATABASE_AUTH_TOKEN,
+      }),
+    })
+  : new PrismaClient();
 
 const DAY = 1000 * 60 * 60 * 24;
 const daysFromNow = (n: number) => new Date(Date.now() + n * DAY);

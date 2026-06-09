@@ -27,7 +27,7 @@ export function Hero() {
   };
 
   return (
-    <section className="on-dark relative flex min-h-screen items-center overflow-hidden">
+    <section className="on-dark relative flex min-h-[100svh] items-center overflow-hidden">
       {/* Sfondo cinematografico a tutto schermo — foto reale, nitida */}
       <Media
         src={HERO_IMG}
@@ -47,7 +47,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-40 top-24 z-0 h-96 w-96 rounded-full bg-gold/15 blur-[130px]" />
       <div className="pointer-events-none absolute -right-24 bottom-10 z-0 h-96 w-96 rounded-full bg-terracotta/15 blur-[130px]" />
 
-      <div className="container-x relative z-10 py-32">
+      <div className="container-x relative z-10 py-24 sm:py-32">
         <motion.div
           variants={container}
           initial="hidden"

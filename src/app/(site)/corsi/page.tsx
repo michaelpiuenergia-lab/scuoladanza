@@ -25,14 +25,14 @@ export default function CorsiPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Corsi" }]}
       />
 
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container-x">
           <CourseCatalog />
         </div>
       </section>
 
       {/* Chiusura */}
-      <section className="bg-cream-2 py-20 sm:py-24">
+      <section className="bg-cream-2 py-16 sm:py-24">
         <div className="container-x text-center">
           <GoldDivider className="mb-10" />
           <h2 className="mx-auto max-w-2xl font-display text-[clamp(1.8rem,4vw,2.75rem)] leading-tight u-ink text-balance">

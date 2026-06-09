@@ -33,7 +33,7 @@ export default async function IscrizionePage({
         crumbs={[{ label: "Home", href: "/" }, { label: "Iscrizione" }]}
       />
 
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-[1.45fr_1fr]">
           {/* Modulo */}
           <div>

@@ -8,7 +8,7 @@ import { PLANS } from "@/data/content";
 
 export function Plans() {
   return (
-    <section id="abbonamenti" className="relative py-24 sm:py-28">
+    <section id="abbonamenti" className="relative py-16 sm:py-28">
       <div className="container-x">
         <SectionHeading
           eyebrow="Abbonamenti"

@@ -22,7 +22,7 @@ export function Sicilia() {
       <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-terracotta/15 blur-[120px]" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-sun/15 blur-[120px]" />
 
-      <div className="container-x relative z-10 py-24 sm:py-28">
+      <div className="container-x relative z-10 py-16 sm:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow is-centered">{SICILIA.eyebrow}</span>
           <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.25rem)] leading-tight u-ink text-balance">

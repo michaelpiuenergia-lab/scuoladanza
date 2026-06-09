@@ -9,7 +9,7 @@ export function CoursesPreview() {
   const featured = COURSES.filter((c) => c.highlight).slice(0, 3);
 
   return (
-    <section id="corsi" className="relative bg-surface-2 py-24 sm:py-28">
+    <section id="corsi" className="relative bg-surface-2 py-16 sm:py-28">
       <div className="container-x">
         <div className="flex flex-col items-end justify-between gap-8 md:flex-row">
           <SectionHeading

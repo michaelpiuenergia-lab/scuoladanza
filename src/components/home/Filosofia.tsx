@@ -7,7 +7,7 @@ import { photo } from "@/data/photos";
 
 export function Filosofia() {
   return (
-    <section id="filosofia" className="relative overflow-hidden py-24 sm:py-28">
+    <section id="filosofia" className="relative overflow-hidden py-16 sm:py-28">
       <MajolicaPattern className="text-gold" opacity={0.04} />
       <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-terracotta/10 blur-[120px]" />
 

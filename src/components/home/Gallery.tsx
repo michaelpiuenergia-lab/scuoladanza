@@ -41,7 +41,7 @@ function Row({
 export function Gallery() {
   const half = Math.ceil(GALLERY.length / 2);
   return (
-    <section id="galleria" className="on-dark relative overflow-hidden bg-scene py-24 sm:py-28">
+    <section id="galleria" className="on-dark relative overflow-hidden bg-scene py-16 sm:py-28">
       <MajolicaPattern className="text-gold" opacity={0.05} />
       <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[44rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]" />
 

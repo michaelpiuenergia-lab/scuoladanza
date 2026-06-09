@@ -22,7 +22,7 @@ export function PageHero({
       <div className="pointer-events-none absolute -left-24 -top-10 h-72 w-72 rounded-full bg-gold/15 blur-[110px]" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-terracotta/12 blur-[110px]" />
 
-      <div className="container-x relative z-10 py-20 text-center sm:py-24">
+      <div className="container-x relative z-10 py-16 text-center sm:py-24">
         <Reveal className="mx-auto max-w-3xl">
           {crumbs && (
             <nav

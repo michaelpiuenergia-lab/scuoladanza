@@ -78,7 +78,7 @@ export default async function CorsoDettaglioPage({
       />
 
       {/* Presentazione: immagine + scheda dati */}
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container-x grid items-start gap-12 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
             <div className="overflow-hidden rounded-[1.6rem] border border-gold/20 p-1.5 shadow-soft">
@@ -142,7 +142,7 @@ export default async function CorsoDettaglioPage({
       </section>
 
       {/* Racconto della disciplina + cosa si impara */}
-      <section className="bg-surface-2 py-20 sm:py-24">
+      <section className="bg-surface-2 py-16 sm:py-24">
         <div className="container-x grid gap-14 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
             <span className="eyebrow">La disciplina</span>
@@ -177,7 +177,7 @@ export default async function CorsoDettaglioPage({
       </section>
 
       {/* Altri corsi */}
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container-x">
           <div className="flex flex-col items-end justify-between gap-6 sm:flex-row">
             <div>

@@ -4,7 +4,7 @@ import { STEPS } from "@/data/content";
 
 export function Steps() {
   return (
-    <section className="relative bg-surface-2 py-24 sm:py-28">
+    <section className="relative bg-surface-2 py-16 sm:py-28">
       <div className="container-x">
         <SectionHeading
           eyebrow="Come iniziare"

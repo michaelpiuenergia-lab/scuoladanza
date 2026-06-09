@@ -57,7 +57,7 @@ export default function ContattiPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Contatti" }]}
       />
 
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container-x">
           {/* Card contatto rapido */}
           <div className="grid gap-6 sm:grid-cols-3">

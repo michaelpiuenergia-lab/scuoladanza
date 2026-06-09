@@ -28,6 +28,8 @@ yarn-error.log*
 # local env files (segreti: DB, auth) — non vanno su GitHub
 .env
 .env*
+# …ma il template senza segreti sì
+!.env.example
 
 # typescript
 *.tsbuildinfo

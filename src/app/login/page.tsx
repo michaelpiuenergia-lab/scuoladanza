@@ -17,7 +17,7 @@ export default async function LoginPage() {
   if (session) redirect(session.role === "ADMIN" ? "/admin" : "/area-riservata");
 
   return (
-    <main className="on-dark relative grid min-h-screen place-items-center overflow-hidden bg-scene px-5 py-16">
+    <main className="on-dark relative grid min-h-[100svh] place-items-center overflow-hidden bg-scene px-5 py-16">
       <MajolicaPattern className="text-gold" opacity={0.05} />
       <div className="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-gold/15 blur-[130px]" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-terracotta/15 blur-[130px]" />

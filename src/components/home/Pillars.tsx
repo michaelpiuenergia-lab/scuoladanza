@@ -12,7 +12,7 @@ const ACCENTS = [
 
 export function Pillars() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section className="relative py-16 sm:py-28">
       <div className="container-x">
         <SectionHeading
           eyebrow="Perché sceglierci"

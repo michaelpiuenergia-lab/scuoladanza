@@ -32,7 +32,7 @@ export default function ChiSiamoPage() {
       />
 
       {/* Storia */}
-      <section className="py-24 sm:py-28">
+      <section className="py-16 sm:py-28">
         <div className="container-x grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <div className="overflow-hidden rounded-[1.6rem] border border-gold/20 p-1.5 shadow-soft">

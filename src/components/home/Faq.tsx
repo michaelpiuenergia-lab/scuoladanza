@@ -12,7 +12,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-24 sm:py-28">
+    <section id="faq" className="relative py-16 sm:py-28">
       <div className="container-x">
         <SectionHeading
           eyebrow="Domande frequenti"

@@ -6,7 +6,7 @@ import { SITE } from "@/data/site";
 
 export function CtaBanner() {
   return (
-    <section className="relative py-24 sm:py-28">
+    <section className="relative py-16 sm:py-28">
       <div className="container-x">
         <Reveal>
           <div className="on-dark relative overflow-hidden rounded-[2rem] border border-gold/25 bg-gradient-to-br from-scene-700 via-scene-800 to-scene px-6 py-16 text-center shadow-lift sm:px-12 sm:py-20">
