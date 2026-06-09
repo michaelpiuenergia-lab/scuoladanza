@@ -1,14 +1,17 @@
 import { Crown, Sun, MapPin } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
-import { Diamond, MajolicaPattern } from "@/components/ui/Ornament";
+import { Diamond, MajolicaPattern, Limoni, Pigna } from "@/components/ui/Ornament";
 import { HERITAGE } from "@/data/content";
 import { PHOTOS, photo } from "@/data/photos";
 
 export function Heritage() {
   return (
     <section id="heritage" className="relative overflow-hidden bg-cream-2 py-16 sm:py-28">
-      <MajolicaPattern className="text-majolica" opacity={0.05} />
+      <MajolicaPattern className="text-majolica" opacity={0.07} />
+      {/* Limoni e pigna: accenti siciliani */}
+      <Limoni className="pointer-events-none absolute -right-6 top-20 z-0 h-44 w-44 rotate-[160deg] text-sun opacity-25" />
+      <Pigna className="pointer-events-none absolute -left-3 bottom-12 z-0 h-40 w-28 text-terracotta opacity-[0.14]" />
       <div className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 -translate-x-1/2 rounded-full bg-majolica/10 blur-[120px]" />
       <div className="pointer-events-none absolute right-1/4 bottom-10 h-72 w-72 translate-x-1/2 rounded-full bg-terracotta/12 blur-[120px]" />
 

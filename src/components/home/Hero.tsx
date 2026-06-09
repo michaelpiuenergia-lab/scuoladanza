@@ -4,7 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, Play, ChevronDown, MapPin, Crown, Sun } from "lucide-react";
 import { Media } from "@/components/ui/Media";
 import { Button } from "@/components/ui/Button";
-import { MajolicaPattern } from "@/components/ui/Ornament";
+import { MajolicaPattern, Limoni } from "@/components/ui/Ornament";
 import { HERO } from "@/data/content";
 import { PHOTOS } from "@/data/photos";
 
@@ -46,6 +46,10 @@ export function Hero() {
       {/* Glow caldi mediterranei, soffusi */}
       <div className="pointer-events-none absolute -left-40 top-24 z-0 h-96 w-96 rounded-full bg-gold/15 blur-[130px]" />
       <div className="pointer-events-none absolute -right-24 bottom-10 z-0 h-96 w-96 rounded-full bg-terracotta/15 blur-[130px]" />
+
+      {/* Anima siciliana: trama di maiolica e un ramo di limoni */}
+      <MajolicaPattern className="text-gold" opacity={0.05} />
+      <Limoni className="pointer-events-none absolute bottom-14 right-8 z-0 hidden h-52 w-52 rotate-[195deg] text-sun opacity-40 lg:block" />
 
       <div className="container-x relative z-10 py-24 sm:py-32">
         <motion.div
