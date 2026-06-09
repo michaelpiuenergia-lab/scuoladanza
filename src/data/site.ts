@@ -56,6 +56,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "La Scuola", href: "/chi-siamo" },
   { label: "Corsi", href: "/corsi" },
+  { label: "Abbonamenti", href: "/abbonamenti" },
   { label: "Iscrizione", href: "/iscrizione" },
   { label: "Contatti", href: "/contatti" },
 ];

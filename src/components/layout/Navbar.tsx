@@ -55,7 +55,7 @@ export function Navbar() {
       <nav className="container-x flex h-[4.75rem] items-center justify-between">
         <Logo />
 
-        <ul className="hidden items-center gap-9 lg:flex">
+        <ul className="hidden items-center gap-6 xl:gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
