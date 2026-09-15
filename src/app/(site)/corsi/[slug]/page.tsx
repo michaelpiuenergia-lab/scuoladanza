@@ -177,7 +177,9 @@ export default async function CorsoDettaglioPage({
         </div>
       </section>
 
-      {/* Locandina ufficiale del corso — mostrata intera, mai ritagliata */}
+      {/* Locandina ufficiale — mostrata intera. Quando la stessa locandina
+          annuncia più corsi (Modern e Hip Hop, o tutti i livelli di classica),
+          il titolo lo dice invece di far credere che sia solo di questo corso. */}
       {course.poster && (
         <section className="on-dark relative overflow-hidden bg-scene py-16 sm:py-24">
           <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[110px]" />
@@ -185,16 +187,17 @@ export default async function CorsoDettaglioPage({
             <Reveal className="mx-auto max-w-xl text-center">
               <span className="eyebrow is-centered">La locandina</span>
               <h2 className="mt-5 font-display text-[clamp(1.7rem,4vw,2.5rem)] leading-tight text-ivory text-balance">
-                {course.title} in un&apos;immagine
+                {course.poster.note ?? `${course.title} in un'immagine`}
               </h2>
               <p className="mt-5 leading-relaxed text-ivory-dim">
-                La grafica ufficiale del corso. Toccala per leggerla a schermo
-                intero o per salvarla e condividerla.
+                {course.poster.note
+                  ? "La grafica ufficiale che annuncia questo corso insieme agli altri che vi compaiono. Toccala per leggerla a schermo intero."
+                  : "La grafica ufficiale del corso. Toccala per leggerla a schermo intero o per salvarla e condividerla."}
               </p>
             </Reveal>
 
             <Reveal delay={0.1} className="mx-auto mt-12 max-w-md">
-              <PosterFrame src={course.poster} title={course.title} />
+              <PosterFrame poster={course.poster} title={course.title} />
             </Reveal>
           </div>
         </section>

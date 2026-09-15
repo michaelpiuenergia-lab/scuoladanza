@@ -80,11 +80,11 @@ function Lightbox({
 
 /** Una locandina cliccabile, sempre intera: mai ritagliata, il testo si legge. */
 export function PosterFrame({
-  src,
+  poster,
   title,
   className,
 }: {
-  src: string;
+  poster: { src: string; w: number; h: number };
   title: string;
   className?: string;
 }) {
@@ -102,17 +102,22 @@ export function PosterFrame({
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={src}
+          src={poster.src}
+          width={poster.w}
+          height={poster.h}
           alt={`Locandina del corso ${title} — Centro Danza Khaybullova`}
           loading="lazy"
-          className="w-full rounded-[0.9rem] transition-transform duration-500 group-hover:scale-[1.02]"
+          className="block w-full rounded-[0.9rem] transition-transform duration-500 group-hover:scale-[1.02]"
         />
         <span className="pointer-events-none absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full border border-gold/40 bg-scene/80 text-gold-light opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
           <Maximize2 className="h-4 w-4" />
         </span>
       </button>
 
-      <Lightbox poster={open ? { src, title } : null} onClose={() => setOpen(false)} />
+      <Lightbox
+        poster={open ? { src: poster.src, title } : null}
+        onClose={() => setOpen(false)}
+      />
     </>
   );
 }

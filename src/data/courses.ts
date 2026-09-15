@@ -8,6 +8,14 @@ import { SAGGIO } from "@/data/photos";
 
 export type Accent = "gold" | "terracotta" | "majolica" | "sun";
 
+// Locandina ufficiale della scuola. `note` c'è SOLO quando la locandina parla
+// di più corsi insieme (es. "Modern e Hip Hop", o la classica che vale per
+// tutti i livelli): in quel caso NON va usata come copertina di un singolo
+// corso — sarebbe fuorviante — ma si mostra dentro la scheda, spiegando a
+// quali corsi si riferisce. Le misure servono a riservare lo spazio giusto
+// in pagina, così la locandina si vede intera senza bande vuote.
+export type Poster = { src: string; w: number; h: number; note?: string };
+
 export type Course = {
   slug: string;
   title: string;
@@ -22,7 +30,7 @@ export type Course = {
   story: string[]; // racconto documentato della disciplina (pagina dettaglio)
   learn: string[]; // "cosa si impara"
   image: string;
-  poster?: string; // locandina ufficiale (grafica con testo: si mostra intera, mai ritagliata)
+  poster?: Poster;
   accent: Accent;
   icon: string; // nome icona lucide-react
   highlight: boolean; // in evidenza in home
@@ -34,6 +42,27 @@ const P = (n: number) => `/images/scuola/foto-${String(n).padStart(2, "0")}.jpg`
 
 // Locandine ufficiali della scuola (vedi /public/images/locandine)
 const L = (name: string) => `/images/locandine/${name}.jpg`;
+
+const LOC = {
+  // Una locandina per un corso solo → fa da copertina alla sua scheda
+  contemporanea: { src: L("contemporanea"), w: 1600, h: 1600 },
+  teatroDanza: { src: L("teatro-danza"), w: 944, h: 1600 },
+  totalBody: { src: L("total-body"), w: 1024, h: 2048 },
+  pilates: { src: L("pilates"), w: 1066, h: 1599 },
+  // Locandine che parlano di più corsi → solo dentro la scheda, con la nota
+  classica: {
+    src: L("classica"),
+    w: 1600,
+    h: 1600,
+    note: "Locandina dei corsi di Danza Classica",
+  },
+  modernHipHop: {
+    src: L("moderno-hiphop"),
+    w: 1024,
+    h: 2048,
+    note: "Locandina dei corsi di Danza Modern e Hip Hop",
+  },
+} satisfies Record<string, Poster>;
 
 // Orario reale della segreteria/scuola (le lezioni si concordano all'iscrizione)
 const ORARIO = "Lun – Ven · pomeriggio";
@@ -130,7 +159,7 @@ export const COURSES: Course[] = [
       "Disciplina, musicalità ed eleganza",
     ],
     image: SAGGIO.punteTrio,
-    poster: L("classica"),
+    poster: LOC.classica,
     accent: "gold",
     icon: "Feather",
     highlight: true,
@@ -163,6 +192,7 @@ export const COURSES: Course[] = [
       "Espressività e musicalità del movimento",
     ],
     image: SAGGIO.classicaTutuViola,
+    poster: LOC.classica,
     accent: "gold",
     icon: "Music2",
     highlight: false,
@@ -195,6 +225,7 @@ export const COURSES: Course[] = [
       "Interpretazione e preparazione ai concorsi",
     ],
     image: SAGGIO.classicaPunte,
+    poster: LOC.classica,
     accent: "gold",
     icon: "Crown",
     highlight: false,
@@ -227,6 +258,7 @@ export const COURSES: Course[] = [
       "La grazia del metodo Vaganova, senza fretta",
     ],
     image: P(14),
+    poster: LOC.classica,
     accent: "terracotta",
     icon: "HeartHandshake",
     highlight: false,
@@ -259,7 +291,7 @@ export const COURSES: Course[] = [
       "Presenza scenica ed espressione",
     ],
     image: SAGGIO.modernoBlu,
-    poster: L("moderno-hiphop"),
+    poster: LOC.modernHipHop,
     accent: "terracotta",
     icon: "Flame",
     highlight: true,
@@ -292,7 +324,7 @@ export const COURSES: Course[] = [
       "Ricerca di un movimento autentico",
     ],
     image: SAGGIO.contemporaneaAssolo,
-    poster: L("contemporanea"),
+    poster: LOC.contemporanea,
     accent: "majolica",
     icon: "Wind",
     highlight: false,
@@ -325,7 +357,7 @@ export const COURSES: Course[] = [
       "Stile personale e spirito di crew",
     ],
     image: P(7),
-    poster: L("moderno-hiphop"),
+    poster: LOC.modernHipHop,
     accent: "sun",
     icon: "Zap",
     highlight: true,
@@ -422,7 +454,7 @@ export const COURSES: Course[] = [
       "Superamento delle inibizioni",
     ],
     image: SAGGIO.flamencoDuo,
-    poster: L("teatro-danza"),
+    poster: LOC.teatroDanza,
     accent: "gold",
     icon: "Drama",
     highlight: false,
@@ -455,7 +487,7 @@ export const COURSES: Course[] = [
       "Movimento adatto a ogni età",
     ],
     image: P(8),
-    poster: L("total-body"),
+    poster: LOC.totalBody,
     accent: "majolica",
     icon: "Activity",
     highlight: false,
@@ -489,7 +521,7 @@ export const COURSES: Course[] = [
     ],
     // Foto della locandina ufficiale, ritagliata senza testo
     image: "/images/scuola/corso-pilates.jpg",
-    poster: L("pilates"),
+    poster: LOC.pilates,
     accent: "majolica",
     icon: "HeartPulse",
     highlight: false,

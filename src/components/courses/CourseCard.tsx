@@ -13,52 +13,53 @@ const ICON_RING: Record<Accent, string> = {
 };
 
 export function CourseCard({ course }: { course: Course }) {
+  // Locandina buona come copertina: solo quella dedicata a questo corso
+  const cover = course.poster && !course.poster.note ? course.poster : null;
+
   return (
     <article
       id={course.slug}
       className="panel ring-gold-hover group relative flex h-full scroll-mt-28 flex-col overflow-hidden"
     >
-      {/* Copertina: la locandina ufficiale se c'è, altrimenti la foto del corso.
-          La locandina è una grafica con testo, quindi va mostrata INTERA: sta
-          dentro il riquadro (object-contain) e lo spazio che avanza è riempito
-          dalla locandina stessa sfocata, così non restano bande vuote. */}
-      <div
-        className={cn(
-          "relative overflow-hidden",
-          course.poster ? "aspect-[3/4]" : "h-52",
-        )}
-      >
-        {course.poster ? (
+      {/* Copertina: la locandina ufficiale del corso, se ne esiste una che
+          riguarda SOLO questo corso (una locandina che ne annuncia due, come
+          "Modern e Hip Hop", non è la copertina di nessuno dei due: quella si
+          vede dentro la scheda del corso). La locandina è una grafica con
+          testo, quindi tiene il suo formato naturale e si vede per intero,
+          senza ritagli e senza bande di riempimento. */}
+      <div className="relative overflow-hidden">
+        {cover ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={course.poster}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full scale-125 object-cover opacity-45 blur-2xl"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={course.poster}
+              src={cover.src}
+              width={cover.w}
+              height={cover.h}
               alt={`Locandina del corso ${course.title} — Centro Danza Khaybullova`}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+              className="block w-full transition-transform duration-700 group-hover:scale-[1.03]"
             />
           </>
         ) : (
-          <Media
-            src={course.image}
-            alt={`${course.title} — ${course.category}`}
-            accent={course.accent}
-            overlay="bottom"
-            className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-          />
+          <div className="relative h-52">
+            <Media
+              src={course.image}
+              alt={`${course.title} — ${course.category}`}
+              accent={course.accent}
+              overlay="bottom"
+              className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
         )}
-        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-          <span className="inline-flex items-center rounded-full border border-gold/50 bg-scene/75 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-gold-light backdrop-blur">
-            {course.category}
-          </span>
-        </div>
+        {/* Sulla locandina il badge non serve e coprirebbe il titolo stampato
+            nella grafica: lo mostro solo sopra le fotografie. */}
+        {!cover && (
+          <div className="absolute left-4 top-4 flex flex-wrap gap-2">
+            <span className="inline-flex items-center rounded-full border border-gold/50 bg-scene/75 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-gold-light backdrop-blur">
+              {course.category}
+            </span>
+          </div>
+        )}
         <div
           className={cn(
             "absolute -bottom-6 right-5 grid h-12 w-12 place-items-center rounded-full border bg-scene-800/90 backdrop-blur",
