@@ -2,31 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { X, Maximize2, ArrowRight } from "lucide-react";
-import { COURSES } from "@/data/courses";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Poster = { src: string; title: string; slug: string };
-
-// Le locandine ufficiali, prese dai corsi che ne hanno una. Una stessa
-// locandina può coprire due corsi (moderna + hip hop): la mostro una volta sola.
-function collectPosters(): Poster[] {
-  const byPoster = new Map<string, Poster>();
-  for (const c of [...COURSES].sort((a, b) => a.order - b.order)) {
-    if (!c.poster) continue;
-    const found = byPoster.get(c.poster);
-    if (found) {
-      // Stessa locandina per più corsi (moderna + hip hop): un solo riquadro,
-      // ma la didascalia li nomina entrambi.
-      found.title = `${found.title} · ${c.title}`;
-      continue;
-    }
-    byPoster.set(c.poster, { src: c.poster, title: c.title, slug: c.slug });
-  }
-  return [...byPoster.values()];
-}
+type Poster = { src: string; title: string };
 
 /** Locandina a schermo intero, chiudibile con Esc o con un clic fuori. */
 function Lightbox({
@@ -132,63 +112,7 @@ export function PosterFrame({
         </span>
       </button>
 
-      <Lightbox poster={open ? { src, title, slug: "" } : null} onClose={() => setOpen(false)} />
-    </>
-  );
-}
-
-/** Sezione "Le nostre locandine" — tutte le grafiche ufficiali dei corsi. */
-export function PosterGrid() {
-  const posters = collectPosters();
-  const [active, setActive] = useState<Poster | null>(null);
-  const reduce = useReducedMotion();
-
-  return (
-    <>
-      {/* Muratura CSS: ogni locandina tiene il suo formato naturale */}
-      <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
-        {posters.map((p, i) => (
-          <motion.figure
-            key={p.src}
-            className="break-inside-avoid"
-            initial={{ opacity: 0, y: reduce ? 0 : 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: reduce ? 0 : (i % 3) * 0.08 }}
-          >
-            <button
-              type="button"
-              onClick={() => setActive(p)}
-              className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl2 border border-gold/25 bg-scene-800 p-1.5 shadow-soft transition-all duration-300 hover:border-gold/60"
-              aria-label={`Ingrandisci la locandina di ${p.title}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={p.src}
-                alt={`Locandina del corso ${p.title} — Centro Danza Khaybullova`}
-                loading="lazy"
-                className="w-full rounded-[0.9rem] transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <span className="pointer-events-none absolute bottom-4 right-4 grid h-9 w-9 place-items-center rounded-full border border-gold/40 bg-scene/80 text-gold-light opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-                <Maximize2 className="h-4 w-4" />
-              </span>
-            </button>
-
-            <figcaption className="mt-3 flex items-center justify-between px-1">
-              <span className="text-sm font-medium u-ink">{p.title}</span>
-              <Link
-                href={`/corsi/${p.slug}`}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-deep transition-colors hover:text-gold"
-              >
-                Scopri
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </figcaption>
-          </motion.figure>
-        ))}
-      </div>
-
-      <Lightbox poster={active} onClose={() => setActive(null)} />
+      <Lightbox poster={open ? { src, title } : null} onClose={() => setOpen(false)} />
     </>
   );
 }

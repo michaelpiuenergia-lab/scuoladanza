@@ -48,6 +48,10 @@ export function CourseCatalog() {
           {filtered.map((course) => (
             <motion.div
               key={course.slug}
+              // h-full: le card della stessa riga restano alte uguali anche
+              // quando le copertine (locandina verticale o foto) hanno altezze
+              // diverse — il corpo della card si distende per compensare.
+              className="h-full"
               layout={!reduce}
               initial={{ opacity: 0, scale: reduce ? 1 : 0.96 }}
               animate={{ opacity: 1, scale: 1 }}

@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { CourseCatalog } from "@/components/courses/CourseCatalog";
-import { PosterGrid } from "@/components/courses/Posters";
-import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { GoldDivider } from "@/components/ui/Ornament";
 
@@ -30,27 +28,6 @@ export default function CorsiPage() {
       <section className="py-16 sm:py-24">
         <div className="container-x">
           <CourseCatalog />
-        </div>
-      </section>
-
-      {/* Locandine ufficiali — grafiche intere, ingrandibili al clic */}
-      <section id="locandine" className="on-dark relative overflow-hidden bg-scene py-16 sm:py-24">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[44rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[120px]" />
-        <div className="container-x relative z-10">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow is-centered">Le nostre locandine</span>
-            <h2 className="mt-5 font-display text-[clamp(1.8rem,4vw,2.75rem)] leading-tight text-ivory text-balance">
-              I corsi, raccontati a colpo d&apos;occhio
-            </h2>
-            <p className="mt-6 leading-relaxed text-ivory-dim">
-              Le grafiche ufficiali che trovi in sede e sui nostri canali social.
-              Toccale per leggerle a schermo intero.
-            </p>
-          </Reveal>
-
-          <div className="mt-14">
-            <PosterGrid />
-          </div>
         </div>
       </section>
 

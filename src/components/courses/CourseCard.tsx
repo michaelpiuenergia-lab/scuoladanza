@@ -16,17 +16,44 @@ export function CourseCard({ course }: { course: Course }) {
   return (
     <article
       id={course.slug}
-      className="panel ring-gold-hover group relative flex scroll-mt-28 flex-col overflow-hidden"
+      className="panel ring-gold-hover group relative flex h-full scroll-mt-28 flex-col overflow-hidden"
     >
-      {/* Immagine */}
-      <div className="relative h-52 overflow-hidden">
-        <Media
-          src={course.image}
-          alt={`${course.title} — ${course.category}`}
-          accent={course.accent}
-          overlay="bottom"
-          className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-        />
+      {/* Copertina: la locandina ufficiale se c'è, altrimenti la foto del corso.
+          La locandina è una grafica con testo, quindi va mostrata INTERA: sta
+          dentro il riquadro (object-contain) e lo spazio che avanza è riempito
+          dalla locandina stessa sfocata, così non restano bande vuote. */}
+      <div
+        className={cn(
+          "relative overflow-hidden",
+          course.poster ? "aspect-[3/4]" : "h-52",
+        )}
+      >
+        {course.poster ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={course.poster}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full scale-125 object-cover opacity-45 blur-2xl"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={course.poster}
+              alt={`Locandina del corso ${course.title} — Centro Danza Khaybullova`}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+            />
+          </>
+        ) : (
+          <Media
+            src={course.image}
+            alt={`${course.title} — ${course.category}`}
+            accent={course.accent}
+            overlay="bottom"
+            className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
         <div className="absolute left-4 top-4 flex flex-wrap gap-2">
           <span className="inline-flex items-center rounded-full border border-gold/50 bg-scene/75 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-gold-light backdrop-blur">
             {course.category}
@@ -60,7 +87,7 @@ export function CourseCard({ course }: { course: Course }) {
         <p className="mt-3 text-sm leading-relaxed u-body">{course.short}</p>
 
         {/* Meta — solo dati reali (età e insegnante; niente orari inventati) */}
-        <dl className="mt-5 space-y-2.5 text-sm u-body">
+        <dl className="mb-6 mt-5 space-y-2.5 text-sm u-body">
           <div className="flex items-center gap-2.5">
             <Users className="h-4 w-4 shrink-0 text-gold-deep" />
             <dd>{course.ageGroup}</dd>
@@ -71,7 +98,7 @@ export function CourseCard({ course }: { course: Course }) {
           </div>
         </dl>
 
-        <div className="mt-6 flex items-center justify-between border-t pt-5">
+        <div className="mt-auto flex items-center justify-between border-t pt-6">
           <Link
             href={`/iscrizione?corso=${course.slug}`}
             className="relative z-10 inline-flex items-center gap-2 text-sm font-semibold text-gold-deep transition-colors hover:text-gold"
