@@ -3,6 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Media } from "@/components/ui/Media";
 import { MajolicaPattern } from "@/components/ui/Ornament";
 import { GALLERY, type Shot } from "@/data/gallery";
+import { PHOTO_CREDIT } from "@/data/photos";
 
 function Row({
   shots,
@@ -64,10 +65,14 @@ export function Gallery() {
         <Row shots={GALLERY.slice(half)} reverse />
       </div>
 
-      <div className="container-x relative z-10 mt-12 text-center">
+      <div className="container-x relative z-10 mt-12 flex flex-col items-center gap-3 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-5 py-2 text-sm text-ivory-dim">
           <Camera className="h-4 w-4 text-gold-light" />
           Oltre 140 momenti dai nostri saggi e spettacoli
+        </span>
+        {/* Credito al fotografo del saggio in teatro */}
+        <span className="text-xs tracking-[0.08em] text-ivory-dim/70">
+          Foto del saggio: {PHOTO_CREDIT}
         </span>
       </div>
     </section>

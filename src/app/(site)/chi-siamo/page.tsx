@@ -8,6 +8,7 @@ import { Storia } from "@/components/home/Storia";
 import { Heritage } from "@/components/home/Heritage";
 import { Sicilia } from "@/components/home/Sicilia";
 import { CtaBanner } from "@/components/home/CtaBanner";
+import { PHOTOS, PHOTO_CREDIT } from "@/data/photos";
 
 export const metadata: Metadata = {
   title: "La Scuola",
@@ -71,6 +72,38 @@ export default function ChiSiamoPage() {
               </blockquote>
               <figcaption className="mt-3 text-sm u-mute">
                 — La nostra maestra
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Il saluto finale del saggio — tutta la scuola sul palco */}
+      <section className="on-dark relative overflow-hidden bg-scene py-16 sm:py-24">
+        <div className="container-x relative z-10">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow is-centered">La nostra famiglia</span>
+            <h2 className="mt-5 font-display text-[clamp(1.8rem,4vw,2.75rem)] leading-tight text-ivory text-balance">
+              Tutti insieme, alla fine del saggio
+            </h2>
+            <p className="mt-6 leading-relaxed text-ivory-dim">
+              Il momento in cui le luci si accendono su tutti: i più piccoli, le
+              allieve delle punte, gli adulti. Un anno intero di lavoro che si
+              conclude con un inchino e un mazzo di fiori.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-12">
+            <figure className="overflow-hidden rounded-[1.6rem] border border-gold/25 p-1.5 shadow-soft">
+              <Media
+                src={PHOTOS.saluto}
+                alt="Il saluto finale del saggio sul palco, sotto il logo del Centro Danza Khaybullova"
+                accent="gold"
+                overlay="none"
+                className="aspect-[16/10] w-full rounded-[1.3rem] sm:aspect-[16/9]"
+              />
+              <figcaption className="px-2 pb-1 pt-3 text-center text-xs tracking-[0.08em] text-ivory-dim/70">
+                Foto: {PHOTO_CREDIT}
               </figcaption>
             </figure>
           </Reveal>

@@ -4,6 +4,8 @@
 // disciplina sono documentate (metodo Vaganova, pas de deux, heels, krav maga…).
 // NB: gli orari delle singole lezioni si concordano in segreteria — non inventati.
 
+import { SAGGIO } from "@/data/photos";
+
 export type Accent = "gold" | "terracotta" | "majolica" | "sun";
 
 export type Course = {
@@ -20,6 +22,7 @@ export type Course = {
   story: string[]; // racconto documentato della disciplina (pagina dettaglio)
   learn: string[]; // "cosa si impara"
   image: string;
+  poster?: string; // locandina ufficiale (grafica con testo: si mostra intera, mai ritagliata)
   accent: Accent;
   icon: string; // nome icona lucide-react
   highlight: boolean; // in evidenza in home
@@ -28,6 +31,9 @@ export type Course = {
 
 // Foto reali della scuola (vedi /public/images/scuola)
 const P = (n: number) => `/images/scuola/foto-${String(n).padStart(2, "0")}.jpg`;
+
+// Locandine ufficiali della scuola (vedi /public/images/locandine)
+const L = (name: string) => `/images/locandine/${name}.jpg`;
 
 // Orario reale della segreteria/scuola (le lezioni si concordano all'iscrizione)
 const ORARIO = "Lun – Ven · pomeriggio";
@@ -59,7 +65,7 @@ export const COURSES: Course[] = [
       "Socialità e fiducia nel gruppo",
       "Primo, dolce contatto con la sala di danza",
     ],
-    image: P(6),
+    image: SAGGIO.babyTutu,
     accent: "sun",
     icon: "Sparkles",
     highlight: false,
@@ -123,7 +129,8 @@ export const COURSES: Course[] = [
       "Posizioni, en dehors e primi port de bras",
       "Disciplina, musicalità ed eleganza",
     ],
-    image: P(21),
+    image: SAGGIO.punteTrio,
+    poster: L("classica"),
     accent: "gold",
     icon: "Feather",
     highlight: true,
@@ -155,7 +162,7 @@ export const COURSES: Course[] = [
       "Avvio graduale del lavoro sulle punte",
       "Espressività e musicalità del movimento",
     ],
-    image: P(1),
+    image: SAGGIO.classicaTutuViola,
     accent: "gold",
     icon: "Music2",
     highlight: false,
@@ -187,7 +194,7 @@ export const COURSES: Course[] = [
       "Studio del repertorio classico",
       "Interpretazione e preparazione ai concorsi",
     ],
-    image: P(18),
+    image: SAGGIO.classicaPunte,
     accent: "gold",
     icon: "Crown",
     highlight: false,
@@ -251,7 +258,8 @@ export const COURSES: Course[] = [
       "Rapporto profondo con la musica",
       "Presenza scenica ed espressione",
     ],
-    image: P(12),
+    image: SAGGIO.modernoBlu,
+    poster: L("moderno-hiphop"),
     accent: "terracotta",
     icon: "Flame",
     highlight: true,
@@ -283,7 +291,8 @@ export const COURSES: Course[] = [
       "Improvvisazione guidata e composizione",
       "Ricerca di un movimento autentico",
     ],
-    image: P(5),
+    image: SAGGIO.contemporaneaAssolo,
+    poster: L("contemporanea"),
     accent: "majolica",
     icon: "Wind",
     highlight: false,
@@ -316,6 +325,7 @@ export const COURSES: Course[] = [
       "Stile personale e spirito di crew",
     ],
     image: P(7),
+    poster: L("moderno-hiphop"),
     accent: "sun",
     icon: "Zap",
     highlight: true,
@@ -386,6 +396,39 @@ export const COURSES: Course[] = [
     order: 11,
   },
   {
+    slug: "teatro-danza",
+    title: "Teatro-Danza",
+    category: "Teatro",
+    level: "Tutti i livelli",
+    ageGroup: "Ragazzi e adulti",
+    teacher: "Staff Khaybullova",
+    schedule: ORARIO,
+    short: "La forza della recitazione unita alla libertà del movimento.",
+    description:
+      "Il teatro-danza fonde la forza espressiva della recitazione con la libertà del movimento. A differenza della danza tradizionale, non cerca la perfezione estetica del passo ma la verità del gesto: qui il corpo diventa uno strumento narrativo unico, che unisce azione, emozione e presenza scenica senza schemi rigidi. È l'allenamento definitivo per superare le inibizioni e conquistare una presenza magnetica sul palco.",
+    highlights: [
+      "Verità del gesto",
+      "Presenza scenica",
+      "Nessuno schema rigido",
+    ],
+    story: [
+      "Il teatro-danza nasce dall'incontro fra due linguaggi che per secoli hanno condiviso il palcoscenico: la parola e il movimento. Non chiede la perfezione estetica del passo, ma la verità del gesto. Il corpo smette di essere solo forma e diventa strumento narrativo: racconta, ricorda, provoca, tace.",
+      "In sala si lavora sull'ascolto, sull'improvvisazione e sulla costruzione del personaggio, intrecciando azione, emozione e presenza. È il percorso che libera dalle inibizioni e rende performer completi e versatili: una doppia competenza che apre molte più porte nei provini, sia teatrali sia di danza.",
+    ],
+    learn: [
+      "Espressività e verità del gesto",
+      "Presenza scenica e gestione del palco",
+      "Improvvisazione e costruzione del personaggio",
+      "Superamento delle inibizioni",
+    ],
+    image: SAGGIO.flamencoDuo,
+    poster: L("teatro-danza"),
+    accent: "gold",
+    icon: "Drama",
+    highlight: false,
+    order: 12,
+  },
+  {
     slug: "ginnastica-dolce-total-body",
     title: "Ginnastica Dolce · Total Body",
     category: "Fitness",
@@ -412,10 +455,45 @@ export const COURSES: Course[] = [
       "Movimento adatto a ogni età",
     ],
     image: P(8),
+    poster: L("total-body"),
     accent: "majolica",
     icon: "Activity",
     highlight: false,
-    order: 12,
+    order: 13,
+  },
+  {
+    slug: "pilates",
+    title: "Pilates",
+    category: "Fitness",
+    level: "Tutti i livelli",
+    ageGroup: "Adulti",
+    teacher: "Istruttrice certificata",
+    schedule: "Martedì e Giovedì · 09:00 – 10:00",
+    short: "Ritrova equilibrio, forza e flessibilità, in piccoli gruppi.",
+    description:
+      "Il metodo Pilates lavora sul centro del corpo per restituire equilibrio, forza e flessibilità. Un allenamento consapevole, fatto di respiro, controllo e precisione, che allunga la muscolatura profonda, scioglie le tensioni e corregge la postura senza sovraccaricare le articolazioni. Le lezioni si svolgono in piccoli gruppi, con istruttrice certificata, il martedì e il giovedì dalle 9:00 alle 10:00.",
+    highlights: [
+      "Piccoli gruppi",
+      "Istruttrice certificata",
+      "Postura ed equilibrio",
+    ],
+    story: [
+      "Il metodo nasce dall'intuizione di Joseph Pilates: un corpo sano è un corpo controllato, capace di muoversi con precisione a partire dal proprio centro. Respiro, concentrazione, fluidità e controllo sono i principi che guidano ogni esercizio.",
+      "Da noi il Pilates è un appuntamento del mattino, in piccoli gruppi, seguito da un'istruttrice certificata: si allunga la muscolatura profonda, si sciolgono le tensioni della giornata e si ritrova una postura più libera. Un lavoro dolce ma esigente, che i ballerini conoscono bene e che fa altrettanto bene a chi non ha mai danzato.",
+    ],
+    learn: [
+      "Controllo del centro del corpo (core)",
+      "Respiro, precisione e fluidità",
+      "Allungamento della muscolatura profonda",
+      "Postura più libera e articolazioni protette",
+    ],
+    // Foto della locandina ufficiale, ritagliata senza testo
+    image: "/images/scuola/corso-pilates.jpg",
+    poster: L("pilates"),
+    accent: "majolica",
+    icon: "HeartPulse",
+    highlight: false,
+    order: 14,
   },
   {
     slug: "krav-maga",
@@ -447,7 +525,7 @@ export const COURSES: Course[] = [
     accent: "majolica",
     icon: "Shield",
     highlight: false,
-    order: 13,
+    order: 15,
   },
 ];
 
@@ -460,6 +538,7 @@ export const COURSE_CATEGORIES = [
   "Moderna",
   "Contemporanea",
   "Urban",
+  "Teatro",
   "Fitness",
 ] as const;
 

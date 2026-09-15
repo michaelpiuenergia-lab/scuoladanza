@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/Badge";
 import { DynIcon } from "@/components/ui/DynIcon";
 import { GoldDivider } from "@/components/ui/Ornament";
 import { CourseCard } from "@/components/courses/CourseCard";
+import { PosterFrame } from "@/components/courses/Posters";
 import { CtaBanner } from "@/components/home/CtaBanner";
 import { COURSES, getCourse } from "@/data/courses";
 
@@ -175,6 +176,29 @@ export default async function CorsoDettaglioPage({
           </Reveal>
         </div>
       </section>
+
+      {/* Locandina ufficiale del corso — mostrata intera, mai ritagliata */}
+      {course.poster && (
+        <section className="on-dark relative overflow-hidden bg-scene py-16 sm:py-24">
+          <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-gold/10 blur-[110px]" />
+          <div className="container-x relative z-10">
+            <Reveal className="mx-auto max-w-xl text-center">
+              <span className="eyebrow is-centered">La locandina</span>
+              <h2 className="mt-5 font-display text-[clamp(1.7rem,4vw,2.5rem)] leading-tight text-ivory text-balance">
+                {course.title} in un&apos;immagine
+              </h2>
+              <p className="mt-5 leading-relaxed text-ivory-dim">
+                La grafica ufficiale del corso. Toccala per leggerla a schermo
+                intero o per salvarla e condividerla.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.1} className="mx-auto mt-12 max-w-md">
+              <PosterFrame src={course.poster} title={course.title} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Altri corsi */}
       <section className="py-16 sm:py-24">

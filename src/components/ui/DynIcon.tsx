@@ -10,6 +10,12 @@ import {
   GraduationCap,
   Drama,
   Sun,
+  Flower2,
+  Star,
+  Users,
+  Activity,
+  Shield,
+  HeartPulse,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,6 +31,12 @@ const MAP: Record<string, LucideIcon> = {
   GraduationCap,
   Drama,
   Sun,
+  Flower2,
+  Star,
+  Users,
+  Activity,
+  Shield,
+  HeartPulse,
 };
 
 export function DynIcon({
